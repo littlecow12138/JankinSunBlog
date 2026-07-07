@@ -20,8 +20,9 @@
 - [x] 首页 / 文章列表 / 文章详情 / 关于页
 - [x] 第一篇博客文章
 - [x] AGENTS.md + Cursor Rules
-- [ ] 推送到 GitHub
-- [ ] 部署到 Vercel
+- [x] 推送到 GitHub
+- [x] 部署到 GitHub Pages
+- [ ] 部署到 Vercel（可选，W6）
 
 ---
 
@@ -99,15 +100,16 @@
 
 ## 文章发布计划
 
-| 周 | 建议文章标题 |
-|----|-------------|
-| W1 | 你好，JankinSunBlog ✅ |
-| W1 | 接入 GitHub MCP ✅ |
-| W2 | 用 Cursor Agent 搭博客骨架 |
+| 周 | 建议文章标题 | 状态 |
+|----|-------------|------|
+| W1 | 你好，JankinSunBlog | ✅ |
+| W1 | 接入 GitHub MCP | ✅ |
+| W1 | 博客上线记：github.io 部署 | ✅ |
+| W2 | 用 Cursor Agent 搭博客骨架 | |
 | W3 | 给博客项目写 Rules，AI 不再乱改 |
 | W4 | Agent 独立完成标签页 Feature |
 | W5 | Issue 驱动的 AI 开发工作流 |
-| W6 | 博客上线：从 localhost 到 Vercel |
+| W6 | Vercel 部署（可选） | |
 
 ---
 
