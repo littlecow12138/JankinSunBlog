@@ -56,3 +56,7 @@ export function getPostBySlug(slug: string): Post | null {
 export function getPostsByTag(tag: string): PostMeta[] {
   return getAllPosts().filter((post) => post.tags.includes(tag));
 }
+
+export function getPostsBySeries(series: string): PostMeta[] {
+  return getAllPosts().filter((post) => post.series === series);
+}
