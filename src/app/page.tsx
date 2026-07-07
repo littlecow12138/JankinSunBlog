@@ -1,65 +1,50 @@
-import Image from "next/image";
+import Link from "next/link";
+import { PostCard } from "@/components/post-card";
+import { getAllPosts } from "@/lib/posts";
 
-export default function Home() {
+export default function HomePage() {
+  const posts = getAllPosts().slice(0, 3);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="mx-auto max-w-3xl px-6 py-14">
+      <section className="mb-16">
+        <p className="mb-4 text-xs uppercase tracking-[0.28em] text-stone-500">Learning in Public</p>
+        <h1 className="max-w-2xl text-4xl font-medium leading-tight text-stone-900 sm:text-5xl">
+          用博客记录 AI Coding 的每一步
+        </h1>
+        <p className="mt-6 max-w-2xl text-lg leading-8 text-stone-600">
+          这个博客既是学习成果，也是实验场。每完成一个 AI Coding 技能点，就写一篇文章；
+          每实现一个功能，就用 Cursor Agent 和 GitHub MCP 走一遍真实开发流程。
+        </p>
+        <div className="mt-8 flex flex-wrap gap-4">
+          <Link
+            href="/blog"
+            className="rounded-full bg-stone-900 px-5 py-2.5 text-sm text-white transition hover:bg-teal-900"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
+            阅读文章
+          </Link>
           <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            href="https://github.com/littlecow12138/JankinSunBlog/issues"
+            className="rounded-full border border-stone-300 px-5 py-2.5 text-sm text-stone-700 transition hover:border-stone-900"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noreferrer"
           >
-            Documentation
+            查看学习任务
           </a>
         </div>
-      </main>
+      </section>
+
+      <section>
+        <div className="mb-6 flex items-end justify-between">
+          <h2 className="text-sm uppercase tracking-[0.22em] text-stone-500">最新文章</h2>
+          <Link href="/blog" className="text-sm text-teal-800 hover:underline">
+            查看全部
+          </Link>
+        </div>
+        {posts.map((post) => (
+          <PostCard key={post.slug} post={post} />
+        ))}
+      </section>
     </div>
   );
 }

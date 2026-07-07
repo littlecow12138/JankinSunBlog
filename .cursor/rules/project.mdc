@@ -1,0 +1,12 @@
+---
+description: JankinSunBlog project-wide coding standards
+alwaysApply: true
+---
+
+- Use TypeScript strict mode; avoid `any`
+- Blog posts live in `content/posts/*.md` with frontmatter: title, description, date, tags
+- Components in `src/components/` use kebab-case filenames
+- Pages in `src/app/` follow Next.js App Router conventions
+- Use Tailwind CSS for styling; keep the warm editorial palette (stone/teal on #faf8f5)
+- Run `npm run build` after significant changes to verify
+- Read `LEARNING.md` for current sprint goals before starting a feature
