@@ -87,21 +87,29 @@
 
 ---
 
-## 当前进度：W5 待开始
+## 当前进度：W5 MCP + GitHub 工作流 ✅
 
 ---
 
-## W5：MCP + GitHub 工作流
+## W5：MCP + GitHub 工作流 ✅
 
 **博客目标**
-- [ ] 所有 Feature 用 GitHub Issue 跟踪
-- [ ] PR 合并前用 MCP 查 Issue 状态
+- [x] Feature 用 GitHub Issue 跟踪（Issue #5 闭环）
+- [x] MCP 查/关 Issue 状态
 
 **AI Coding 练习**
-- [ ] 用 GitHub MCP 创建 / 关闭 Issue
-- [ ] 用 Agent + MCP 完成「Issue → 实现 → 关闭」闭环
+- [x] GitHub MCP 创建 Issue #5
+- [x] Agent 实现 + MCP 关闭 Issue #5
+
+**改动**：`blog/[slug]/page.tsx` 标签可点击 + 阅读时长
+
+**文章**：`content/posts/w5-mcp-issue-workflow.md`
 
 **对应理论**：`06-MCP与工具扩展.md`
+
+---
+
+## 当前进度：W6 待开始
 
 ---
 
@@ -130,7 +138,7 @@
 | W2 | W2 首页优化：Hero + 系列文章 | ✅ |
 | W3 | 上下文工程：Rules 配置 | ✅ |
 | W4 | Agent 独立完成标签页 Feature | ✅ |
-| W5 | Issue 驱动的 AI 开发工作流 |
+| W5 | Issue 驱动的 MCP 工作流 | ✅ |
 | W6 | Vercel 部署（可选） | |
 
 ---

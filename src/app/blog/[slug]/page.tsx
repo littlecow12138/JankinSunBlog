@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MarkdownContent } from "@/components/markdown-content";
-import { getAllPosts, getPostBySlug } from "@/lib/posts";
+import { getAllPosts, getPostBySlug, tagToSlug } from "@/lib/posts";
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
@@ -50,18 +50,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <header className="mt-8 border-b border-stone-200/80 pb-8">
         <div className="mb-4 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.18em] text-stone-500">
           <time dateTime={post.date}>{formatDate(post.date)}</time>
+          <span>{post.readingTimeMinutes} 分钟阅读</span>
           {post.series ? <span>{post.series}</span> : null}
         </div>
         <h1 className="text-4xl font-medium leading-tight text-stone-900">{post.title}</h1>
         <p className="mt-4 text-lg leading-8 text-stone-600">{post.description}</p>
         <div className="mt-5 flex flex-wrap gap-2">
           {post.tags.map((tag) => (
-            <span
+            <Link
               key={tag}
-              className="rounded-full bg-stone-100 px-3 py-1 text-xs text-stone-600"
+              href={`/tags/${tagToSlug(tag)}`}
+              className="rounded-full bg-stone-100 px-3 py-1 text-xs text-stone-600 transition hover:bg-stone-200/80 hover:text-teal-800"
             >
               {tag}
-            </span>
+            </Link>
           ))}
         </div>
       </header>
