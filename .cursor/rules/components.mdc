@@ -1,0 +1,45 @@
+---
+description: React component conventions for src/components/
+globs: src/components/**
+alwaysApply: false
+---
+
+# Component Rules
+
+## File & Export
+
+- Filename: kebab-case（如 `post-card.tsx`）
+- 使用 **named export**，不用 default export
+- Props 用 `type XxxProps = { ... }` 定义
+
+```tsx
+// ✅
+export function PostCard({ post }: PostCardProps) { ... }
+
+// ❌
+export default function PostCard() { ... }
+```
+
+## Server vs Client
+
+- 默认 **Server Component**，不加 `"use client"`
+- 仅在需要 useState、useEffect、浏览器事件时加 `"use client"`
+
+## Styling
+
+- 只用 Tailwind，不写 inline style
+- 保持 editorial 暖色风格：背景 `#faf8f5`，主色 stone，强调 teal
+- 标签：`rounded-full bg-stone-100 px-3 py-1 text-xs text-stone-600`
+- 链接：`text-teal-800 hover:underline` 或 `group-hover:text-teal-800`
+- 区块标题：`text-sm uppercase tracking-[0.22em] text-stone-500`
+- 不要 AI 紫色、玻璃态（backdrop-blur 仅 header 已有用法可保留）
+
+## Imports
+
+- 类型从 `@/lib/posts` 等路径导入，用 `import type`
+- 站内导航用 `next/link` 的 `Link`
+
+## 复用
+
+- 新 UI 先查 `src/components/` 是否已有可复用组件
+- 日期格式化等局部 helper 可放在组件文件内，不必过早抽象

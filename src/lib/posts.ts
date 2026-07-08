@@ -2,6 +2,8 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
+const CHARS_PER_MINUTE = 400;
+
 export type PostMeta = {
   slug: string;
   title: string;
@@ -9,6 +11,7 @@ export type PostMeta = {
   date: string;
   tags: string[];
   series?: string;
+  readingTimeMinutes: number;
 };
 
 export type Post = PostMeta & {
@@ -16,6 +19,22 @@ export type Post = PostMeta & {
 };
 
 const postsDirectory = path.join(process.cwd(), "content/posts");
+
+function stripMarkdown(content: string): string {
+  return content
+    .replace(/```[\s\S]*?```/g, "")
+    .replace(/`[^`]+`/g, "")
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, "")
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/^#{1,6}\s+/gm, "")
+    .replace(/[*_~>|`-]/g, "")
+    .replace(/\s+/g, "");
+}
+
+export function estimateReadingTime(content: string): number {
+  const charCount = stripMarkdown(content).length;
+  return Math.max(1, Math.ceil(charCount / CHARS_PER_MINUTE));
+}
 
 function parsePostFile(slug: string): Post {
   const filePath = path.join(postsDirectory, `${slug}.md`);
@@ -29,6 +48,7 @@ function parsePostFile(slug: string): Post {
     date: data.date as string,
     tags: (data.tags as string[]) ?? [],
     series: data.series as string | undefined,
+    readingTimeMinutes: estimateReadingTime(content),
     content,
   };
 }
@@ -39,8 +59,8 @@ export function getAllPosts(): PostMeta[] {
   return files
     .map((file) => {
       const slug = file.replace(/\.md$/, "");
-      const { title, description, date, tags, series } = parsePostFile(slug);
-      return { slug, title, description, date, tags, series };
+      const { title, description, date, tags, series, readingTimeMinutes } = parsePostFile(slug);
+      return { slug, title, description, date, tags, series, readingTimeMinutes };
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }

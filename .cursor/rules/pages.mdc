@@ -1,0 +1,53 @@
+---
+description: Next.js App Router page conventions for src/app/
+globs: src/app/**
+alwaysApply: false
+---
+
+# Page Rules
+
+## Next.js 16 注意
+
+- 本项目是 **Next.js 16**，API 可能与训练数据不同；改路由相关代码前先查 `node_modules/next/dist/docs/`
+- 动态路由 `params` 类型为 **Promise**，需 `await`：
+
+```tsx
+type PageProps = { params: Promise<{ slug: string }> };
+
+export default async function Page({ params }: PageProps) {
+  const { slug } = await params;
+}
+```
+
+## Server Components
+
+- 页面默认 Server Component，在服务端调用 `@/lib/posts` 读数据
+- 仅在需要客户端交互时拆出 `"use client"` 子组件
+
+## 页面结构
+
+- 内容区容器：`mx-auto max-w-3xl px-6 py-14`
+- 区块标题：`text-sm uppercase tracking-[0.22em] text-stone-500`
+- 页面主标题：`text-4xl font-medium text-stone-900`
+
+## 路由约定
+
+| 路径 | 用途 |
+|------|------|
+| `src/app/page.tsx` | 首页 |
+| `src/app/blog/page.tsx` | 文章列表 |
+| `src/app/blog/[slug]/page.tsx` | 文章详情 |
+| `src/app/about/page.tsx` | 关于页 |
+
+- 动态文章页需 `generateStaticParams()`（静态导出兼容 GitHub Pages）
+- 需要 SEO 的页面导出 `generateMetadata`
+
+## 数据 & 链接
+
+- 文章数据只通过 `@/lib/posts` 获取，不在页面内直接读 Markdown 文件
+- 站内链接用 `Link`；外链加 `target="_blank" rel="noreferrer"`
+
+## 样式
+
+- 全局样式在 `globals.css`；页面级只用 Tailwind
+- 不要引入 UI 框架（shadcn 等）除非用户明确要求

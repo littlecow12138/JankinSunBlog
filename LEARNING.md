@@ -26,32 +26,48 @@
 
 ---
 
-## W2：内容与 Prompt 练习
+## 当前进度：W2 首页优化 ✅
+
+---
+
+## W2：内容与 Prompt 练习 ✅
 
 **博客目标**
-- [ ] 优化首页视觉
-- [ ] 增加「系列文章」筛选
+- [x] 优化首页视觉
+- [x] 增加「系列文章」展示
 
 **AI Coding 练习**
-- [ ] 用 Cursor Cmd+K 改组件样式
-- [ ] 把 AI-Coding-Learning 的一篇笔记改写成博客文章
-- [ ] 练习 `@file` 精准引用
+- [x] 用 Cursor Cmd+K 改组件样式
+- [x] 把 AI-Coding-Learning 的一篇笔记改写成博客文章
+- [x] 练习 `@file` 精准引用
+
+**Commit**：`a323d7b` — feat: optimize homepage hero and add series section
 
 **对应理论**：`02-LLM基础与Prompt工程.md`
 
 ---
 
-## W3：上下文工程
+## 当前进度：W3 上下文工程 ✅
+
+---
+
+## W3：上下文工程 ✅
 
 **博客目标**
-- [ ] 完善 `.cursor/rules/`（组件、文章、页面各一条）
-- [ ] 统一代码风格（命名、目录）
+- [x] 完善 `.cursor/rules/`（组件、文章、页面各一条）
+- [x] 统一代码风格（命名、目录）
 
 **AI Coding 练习**
-- [ ] 新开会话，验证 Agent 是否自动遵循 Rules
-- [ ] 记录「AI 犯过的错 → 补进 Rules」
+- [x] 新开会话，验证 Agent 是否自动遵循 Rules（PostCard 阅读时长，无犯规）
+- [x] 记录「AI 犯过的错 → 补进 Rules」（见 AGENTS.md 常犯错误表）
+
+**验证改动**：`post-card.tsx` + `posts.ts` 阅读时长
 
 **对应理论**：`04-上下文工程Context-Engineering.md`
+
+---
+
+## 当前进度：W4 待开始
 
 ---
 
@@ -105,8 +121,8 @@
 | W1 | 你好，JankinSunBlog | ✅ |
 | W1 | 接入 GitHub MCP | ✅ |
 | W1 | 博客上线记：github.io 部署 | ✅ |
-| W2 | 用 Cursor Agent 搭博客骨架 | |
-| W3 | 给博客项目写 Rules，AI 不再乱改 |
+| W2 | W2 首页优化：Hero + 系列文章 | ✅ |
+| W3 | 上下文工程：Rules 配置 | ✅ |
 | W4 | Agent 独立完成标签页 Feature |
 | W5 | Issue 驱动的 AI 开发工作流 |
 | W6 | Vercel 部署（可选） | |

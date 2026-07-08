@@ -18,6 +18,7 @@ export function PostCard({ post }: PostCardProps) {
     <article className="group border-b border-stone-200/80 py-8 last:border-b-0">
       <div className="mb-3 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.18em] text-stone-500">
         <time dateTime={post.date}>{formatDate(post.date)}</time>
+        <span>{post.readingTimeMinutes} 分钟阅读</span>
         {post.series ? <span>{post.series}</span> : null}
       </div>
       <h2 className="text-2xl font-medium text-stone-900 transition group-hover:text-teal-800">

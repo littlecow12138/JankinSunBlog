@@ -1,0 +1,45 @@
+---
+description: Markdown blog post conventions for content/posts/
+globs: content/posts/**
+alwaysApply: false
+---
+
+# Blog Post Rules
+
+## Frontmatter（必填）
+
+```yaml
+---
+title: "文章标题"
+description: "一句话摘要，用于 SEO 和列表页"
+date: "YYYY-MM-DD"
+tags: ["标签1", "标签2"]
+series: "AI Coding 实战"   # 可选，系列名
+---
+```
+
+- 文件名即 slug：`kebab-case.md`（如 `w2-homepage-optimize.md`）
+- **不要修改已有文章的 `date`**
+
+## 写作风格
+
+- 面向读者，讲清楚「为什么 / 怎么做 / 学到什么」，避免内部流水账
+- 与现有文章一致：短段落、`##` 分节、必要时用表格和代码块
+- 中文正文；技术术语可保留英文（Cmd+K、Agent、Issue 等）
+
+## 内容结构参考
+
+1. 开头：问题或背景（1–2 段）
+2. 主体：步骤、对比、代码示例
+3. 结尾：下一步或相关文章链接
+
+## 链接
+
+- 文内 GitHub Issue / 外链用完整 URL
+- 相关文章链接格式：`/JankinSunBlog/blog/{slug}/`（兼容 GitHub Pages basePath）
+
+## 不要
+
+- 不要改已有文章的发布日期
+- 不要在 frontmatter 之外重复写标题（正文从 `##` 开始）
+- 不要写 README 式目录索引，除非文章主题需要
