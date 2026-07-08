@@ -18,6 +18,11 @@ export type Post = PostMeta & {
   content: string;
 };
 
+export type TagWithCount = {
+  tag: string;
+  count: number;
+};
+
 const postsDirectory = path.join(process.cwd(), "content/posts");
 
 function stripMarkdown(content: string): string {
@@ -79,4 +84,26 @@ export function getPostsByTag(tag: string): PostMeta[] {
 
 export function getPostsBySeries(series: string): PostMeta[] {
   return getAllPosts().filter((post) => post.series === series);
+}
+
+export function getAllTags(): TagWithCount[] {
+  const tagCounts = new Map<string, number>();
+
+  for (const post of getAllPosts()) {
+    for (const tag of post.tags) {
+      tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+    }
+  }
+
+  return Array.from(tagCounts.entries())
+    .map(([tag, count]) => ({ tag, count }))
+    .sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag, "zh-CN"));
+}
+
+export function tagToSlug(tag: string): string {
+  return encodeURIComponent(tag).replace(/%/g, "_");
+}
+
+export function tagFromSlug(slug: string): string {
+  return decodeURIComponent(slug.replace(/_/g, "%"));
 }

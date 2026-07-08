@@ -67,21 +67,27 @@
 
 ---
 
-## 当前进度：W4 待开始
+## 当前进度：W4 Agentic 功能开发 ✅
 
 ---
 
-## W4：Agentic 功能开发
+## W4：Agentic 功能开发 ✅
 
 **博客目标**
-- [ ] 标签页 `/tags/[tag]`
-- [ ] 站内搜索（或标签过滤）
+- [x] 标签页 `/tags` + `/tags/[tag]`
+- [x] 文章可按标签筛选（PostCard 标签可点击）
 
 **AI Coding 练习**
-- [ ] 用 Agent 模式完成一个跨 3+ 文件的 Feature
-- [ ] Review diff + 跑 `npm run build`
+- [x] 用 Agent 模式完成跨 5 文件的 Feature
+- [x] Review diff + `npm run build` / `build:pages`
+
+**分支**：`feature/tags-page`
 
 **对应理论**：`05-Agentic-Coding智能体编程.md`
+
+---
+
+## 当前进度：W5 待开始
 
 ---
 
@@ -123,7 +129,7 @@
 | W1 | 博客上线记：github.io 部署 | ✅ |
 | W2 | W2 首页优化：Hero + 系列文章 | ✅ |
 | W3 | 上下文工程：Rules 配置 | ✅ |
-| W4 | Agent 独立完成标签页 Feature |
+| W4 | Agent 独立完成标签页 Feature | ✅ |
 | W5 | Issue 驱动的 AI 开发工作流 |
 | W6 | Vercel 部署（可选） | |
 
